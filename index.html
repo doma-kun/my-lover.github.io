@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#090615">
-<title>Our Little World ❤️</title>
+<meta name="theme-color" content="#0a0510">
+<title>دوما ❤️ ملاكي</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Amiri:wght@400;700&family=Reem+Kufi:wght@400;500;600;700&display=swap');
 
 *{
     margin:0;
@@ -20,30 +20,34 @@ html{
 }
 
 body{
-    background:#080611;
+    background:#0a0510;
     color:#fff;
     font-family:'Cairo',sans-serif;
     overflow-x:hidden;
-    position:relative;
 }
 
-/* الخلفية WebGL تكون مثبتة خلف المحتوى */
-#webgl-background{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    z-index:-10;
-    pointer-events:none;
-}
+/* =========================
+   خلفية متحركة
+========================= */
 
-/* طبقة إضافية للنجوم المتلألئة (CSS) */
-.stars-overlay{
+.background{
     position:fixed;
     inset:0;
-    pointer-events:none;
     z-index:-5;
+    background:
+        radial-gradient(circle at 15% 15%, rgba(255,45,100,.18), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(150,50,255,.15), transparent 30%),
+        radial-gradient(circle at 50% 80%, rgba(255,0,80,.12), transparent 35%),
+        radial-gradient(circle at 75% 60%, rgba(100,50,200,.1), transparent 25%),
+        #0a0510;
+    pointer-events:none;
+}
+
+.stars{
+    position:fixed;
+    inset:0;
+    z-index:-4;
+    pointer-events:none;
 }
 
 .star{
@@ -57,7 +61,7 @@ body{
 
 @keyframes twinkle{
     0%,100%{opacity:.2;transform:scale(1)}
-    50%{opacity:1;transform:scale(1.8)}
+    50%{opacity:1;transform:scale(1.8);box-shadow:0 0 10px #fff}
 }
 
 /* =========================
@@ -72,34 +76,36 @@ body{
     align-items:center;
     justify-content:center;
     background:
-        radial-gradient(circle at center,#21102b,#080611 65%);
+        radial-gradient(circle at center,#1a0a20,#0a0510 70%);
     transition:1s ease;
 }
 
 .intro-box{
-    width:min(90%,430px);
+    width:min(90%,450px);
     text-align:center;
 }
 
 .intro-heart{
-    font-size:80px;
+    font-size:85px;
     animation:heartBeat 1.4s infinite;
-    filter:drop-shadow(0 0 25px #ff397d);
+    filter:drop-shadow(0 0 30px #ff397d);
 }
 
 @keyframes heartBeat{
     0%,100%{transform:scale(1)}
-    50%{transform:scale(1.15)}
+    50%{transform:scale(1.2)}
 }
 
 .intro-box h1{
-    font-size:31px;
-    margin:15px 0 8px;
+    font-size:32px;
+    margin:15px 0 10px;
+    font-weight:800;
 }
 
 .intro-box p{
     color:#c8bdce;
-    margin-bottom:28px;
+    margin-bottom:30px;
+    line-height:1.8;
 }
 
 .open-btn{
@@ -108,20 +114,21 @@ body{
     font-family:inherit;
     font-weight:800;
     font-size:16px;
-    padding:15px 35px;
+    padding:16px 40px;
     border-radius:50px;
     cursor:pointer;
     background:linear-gradient(135deg,#ff2f72,#8b3dff);
-    box-shadow:0 10px 35px rgba(255,40,120,.3);
+    box-shadow:0 10px 35px rgba(255,40,120,.35);
     transition:.3s;
 }
 
 .open-btn:hover{
-    transform:translateY(-3px) scale(1.03);
+    transform:translateY(-3px) scale(1.05);
+    box-shadow:0 15px 45px rgba(255,40,120,.5);
 }
 
 /* =========================
-   المحتوى
+   المحتوى الرئيسي
 ========================= */
 
 #main{
@@ -130,7 +137,7 @@ body{
 }
 
 .container{
-    width:min(92%,900px);
+    width:min(92%,850px);
     margin:auto;
 }
 
@@ -142,6 +149,10 @@ section{
     justify-content:center;
 }
 
+/* =========================
+   HERO
+========================= */
+
 .hero{
     text-align:center;
     position:relative;
@@ -149,34 +160,37 @@ section{
 
 .badge{
     display:inline-block;
-    padding:7px 17px;
+    padding:8px 20px;
     border:1px solid rgba(255,255,255,.12);
     background:rgba(255,255,255,.05);
     border-radius:50px;
     color:#ff9bbd;
     font-size:13px;
-    margin-bottom:20px;
+    margin-bottom:25px;
+    letter-spacing:2px;
 }
 
 .hero h1{
-    font-size:clamp(42px,10vw,85px);
-    line-height:1;
-    font-weight:800;
+    font-size:clamp(45px,10vw,90px);
+    line-height:1.1;
+    font-weight:900;
     background:linear-gradient(135deg,#fff,#ff77a7,#bd8cff);
     -webkit-background-clip:text;
     color:transparent;
+    letter-spacing:2px;
 }
 
 .hero h2{
-    margin-top:20px;
+    margin-top:25px;
     color:#ddd2e0;
-    font-size:clamp(18px,4vw,27px);
+    font-size:clamp(18px,4vw,28px);
     font-weight:400;
+    line-height:1.8;
 }
 
 .hero-heart{
-    font-size:70px;
-    margin-top:35px;
+    font-size:75px;
+    margin-top:40px;
     animation:float 3s infinite ease-in-out;
 }
 
@@ -191,22 +205,25 @@ section{
 
 .section-title{
     text-align:center;
-    margin-bottom:45px;
+    margin-bottom:50px;
 }
 
 .section-title span{
     color:#ff6e9e;
     font-size:13px;
+    letter-spacing:2px;
 }
 
 .section-title h2{
-    font-size:34px;
-    margin-top:5px;
+    font-size:36px;
+    margin-top:8px;
+    font-weight:800;
 }
 
 .section-title p{
     color:#a9a0ad;
-    margin-top:8px;
+    margin-top:10px;
+    line-height:1.8;
 }
 
 /* =========================
@@ -216,27 +233,75 @@ section{
 .counter-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:12px;
+    gap:15px;
 }
 
 .counter{
-    padding:25px 10px;
+    padding:30px 15px;
     text-align:center;
     border:1px solid rgba(255,255,255,.08);
-    background:rgba(255,255,255,.045);
-    backdrop-filter:blur(12px);
-    border-radius:20px;
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(15px);
+    border-radius:22px;
+    transition:.3s;
+}
+
+.counter:hover{
+    transform:translateY(-5px);
+    border-color:rgba(255,90,140,.3);
+    box-shadow:0 15px 40px rgba(255,40,120,.15);
 }
 
 .counter strong{
     display:block;
-    font-size:30px;
+    font-size:34px;
+    font-weight:900;
     color:#ff80a8;
 }
 
 .counter span{
     font-size:12px;
     color:#aaa;
+}
+
+/* =========================
+   الألقاب
+========================= */
+
+.petnames{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.petname{
+    padding:28px 15px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,.08);
+    background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+    border-radius:22px;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.petname:hover{
+    transform:translateY(-5px) scale(1.03);
+    border-color:rgba(255,90,140,.4);
+    box-shadow:0 20px 50px rgba(255,40,120,.2);
+}
+
+.petname .emoji{
+    font-size:40px;
+    display:block;
+    margin-bottom:12px;
+}
+
+.petname h3{
+    font-size:20px;
+    font-weight:800;
+    background:linear-gradient(135deg,#ff7aa8,#bd8cff);
+    -webkit-background-clip:text;
+    color:transparent;
 }
 
 /* =========================
@@ -277,27 +342,79 @@ section{
 }
 
 .story-card{
-    padding:22px;
+    padding:25px;
     border-radius:22px;
-    background:rgba(255,255,255,.045);
+    background:rgba(255,255,255,.05);
     border:1px solid rgba(255,255,255,.08);
+    transition:.3s;
+}
+
+.story-card:hover{
+    border-color:rgba(255,90,140,.3);
+    box-shadow:0 10px 35px rgba(255,40,120,.15);
 }
 
 .story-card small{
     color:#ff76a5;
+    font-size:12px;
 }
 
 .story-card h3{
-    margin:5px 0;
+    margin:8px 0;
+    font-size:19px;
+    font-weight:800;
 }
 
 .story-card p{
     color:#bcb4c0;
-    line-height:1.9;
+    line-height:2;
+    font-size:14px;
 }
 
 /* =========================
-   الرسائل
+   كلمات الحب
+========================= */
+
+.love-words{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.word-card{
+    padding:30px;
+    text-align:center;
+    border-radius:22px;
+    background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+    border:1px solid rgba(255,255,255,.08);
+    transition:.3s;
+}
+
+.word-card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(255,90,140,.4);
+}
+
+.word-card .word{
+    font-size:28px;
+    font-weight:900;
+    margin-bottom:10px;
+}
+
+.word-card .word.gradient{
+    background:linear-gradient(135deg,#ff77a7,#bd8cff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.word-card p{
+    color:#bcb4c0;
+    line-height:1.9;
+    font-size:14px;
+}
+
+/* =========================
+   الرسائل السرية
 ========================= */
 
 .messages{
@@ -329,13 +446,15 @@ section{
 
 .message h3{
     margin-top:10px;
+    font-weight:800;
 }
 
 .message p{
     display:none;
     color:#d9ced8;
-    line-height:1.9;
+    line-height:2;
     margin-top:10px;
+    font-size:14px;
 }
 
 .message.open p{
@@ -351,12 +470,12 @@ section{
 ========================= */
 
 .sky{
-    height:500px;
+    height:450px;
     position:relative;
     overflow:hidden;
     border-radius:30px;
     background:
-        radial-gradient(circle at center,#21112d,#080611 75%);
+        radial-gradient(circle at center,#1a0a25,#0a0510 75%);
     border:1px solid rgba(255,255,255,.08);
 }
 
@@ -389,6 +508,7 @@ section{
 
 .sky-message h3{
     font-size:24px;
+    font-weight:800;
 }
 
 .sky-message p{
@@ -402,9 +522,9 @@ section{
 .quiz{
     max-width:600px;
     margin:auto;
-    padding:30px;
+    padding:35px;
     border-radius:28px;
-    background:rgba(255,255,255,.045);
+    background:rgba(255,255,255,.05);
     border:1px solid rgba(255,255,255,.08);
     text-align:center;
 }
@@ -412,6 +532,7 @@ section{
 .quiz h3{
     font-size:22px;
     margin-bottom:25px;
+    font-weight:800;
 }
 
 .answers{
@@ -424,10 +545,11 @@ section{
     background:rgba(255,255,255,.04);
     color:#fff;
     font-family:inherit;
-    padding:13px;
+    padding:14px;
     border-radius:15px;
     cursor:pointer;
     transition:.2s;
+    font-size:15px;
 }
 
 .answer:hover{
@@ -448,24 +570,25 @@ section{
 .letter{
     max-width:700px;
     margin:auto;
-    padding:35px;
+    padding:40px;
     border-radius:30px;
     background:
         linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.025));
     border:1px solid rgba(255,255,255,.1);
-    box-shadow:0 20px 80px rgba(0,0,0,.25);
+    box-shadow:0 20px 80px rgba(0,0,0,.3);
 }
 
 .letter p{
     color:#d7ced8;
-    line-height:2.2;
-    font-size:17px;
+    line-height:2.3;
+    font-size:16px;
 }
 
 .signature{
-    margin-top:30px;
+    margin-top:35px;
     color:#ff719f;
-    font-size:20px;
+    font-size:22px;
+    font-weight:800;
 }
 
 /* =========================
@@ -477,7 +600,7 @@ section{
 }
 
 .gift{
-    font-size:110px;
+    font-size:120px;
     cursor:pointer;
     display:inline-block;
     transition:.3s;
@@ -489,7 +612,7 @@ section{
 }
 
 .gift:hover{
-    transform:scale(1.12);
+    transform:scale(1.15);
 }
 
 .final-message{
@@ -504,40 +627,22 @@ section{
 }
 
 .final-message h2{
-    font-size:36px;
+    font-size:40px;
     background:linear-gradient(135deg,#ff6d9c,#bd8cff);
     -webkit-background-clip:text;
     color:transparent;
+    font-weight:900;
 }
 
 .final-message p{
     color:#c9bfcb;
-    line-height:2;
+    line-height:2.2;
     margin-top:15px;
 }
 
 @keyframes fadeUp{
     from{opacity:0;transform:translateY(25px)}
     to{opacity:1;transform:translateY(0)}
-}
-
-/* =========================
-   زر الموسيقى
-========================= */
-
-.music{
-    position:fixed;
-    left:18px;
-    bottom:18px;
-    width:50px;
-    height:50px;
-    border-radius:50%;
-    border:1px solid rgba(255,255,255,.1);
-    background:rgba(20,15,28,.8);
-    color:white;
-    cursor:pointer;
-    z-index:500;
-    backdrop-filter:blur(10px);
 }
 
 /* =========================
@@ -589,6 +694,14 @@ footer{
         grid-template-columns:repeat(2,1fr);
     }
 
+    .petnames{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .love-words{
+        grid-template-columns:1fr;
+    }
+
     .messages{
         grid-template-columns:1fr;
     }
@@ -602,7 +715,11 @@ footer{
     }
 
     .sky{
-        height:420px;
+        height:380px;
+    }
+
+    .section-title h2{
+        font-size:28px;
     }
 }
 </style>
@@ -610,1052 +727,484 @@ footer{
 
 <body>
 
-<!-- خلفية WebGL ثلاثية الأبعاد -->
-<div id="webgl-background"></div>
-
-<!-- نجوم CSS إضافية -->
-<div class="stars-overlay" id="stars"></div>
+<!-- خلفية النجوم -->
+<div class="stars" id="stars"></div>
+<div class="background"></div>
 
 <!-- =========================
-     INTRO
+     شاشة البداية
 ========================= -->
 
 <div id="intro">
-
     <div class="intro-box">
-
         <div class="intro-heart">❤️</div>
-
         <h1>لدي شيء صغير لكِ</h1>
-
         <p>
-            صنعت هذا المكان من أجلكِ فقط...
+            صنعت هذا المكان من أجلكِ فقط...<br>
             هل أنتِ مستعدة؟
         </p>
-
         <button class="open-btn" onclick="openSite()">
             افتحي الهدية ✨
         </button>
-
     </div>
-
 </div>
 
-
 <!-- =========================
-     MAIN
+     المحتوى الرئيسي
 ========================= -->
 
 <div id="main">
 
 <!-- HERO -->
-
 <section>
-
 <div class="container hero">
-
-    <div class="badge">
-        مكان صغير لنا فقط ❤️
-    </div>
-
-    <h1 id="coupleNames">
-        حكيم ❤️ حبيبتي
-    </h1>
-
+    <div class="badge">مكان صغير لنا فقط ❤️</div>
+    <h1>دوما ❤️ ملاكي</h1>
     <h2>
         قصتنا الصغيرة... التي أتمنى ألا تنتهي.
     </h2>
-
-    <div class="hero-heart">
-        💗
-    </div>
-
+    <div class="hero-heart">💗</div>
 </div>
-
 </section>
 
-
-<!-- COUNTER -->
-
+<!-- العداد -->
 <section>
-
 <div class="container">
-
     <div class="section-title">
-
         <span>TIME TOGETHER</span>
-
         <h2>منذ أن بدأت قصتنا ⏳</h2>
-
-        <p>
-            وكل ثانية بعدها أصبحت جزءًا من ذاكرتي.
-        </p>
-
+        <p>منذ 5 ديسمبر 2025... وكل ثانية بعدها أصبحت جزءًا من ذاكرتي.</p>
     </div>
-
     <div class="counter-grid">
-
         <div class="counter">
             <strong id="days">0</strong>
             <span>يوم</span>
         </div>
-
         <div class="counter">
             <strong id="hours">0</strong>
             <span>ساعة</span>
         </div>
-
         <div class="counter">
             <strong id="minutes">0</strong>
             <span>دقيقة</span>
         </div>
-
         <div class="counter">
             <strong id="seconds">0</strong>
             <span>ثانية</span>
         </div>
-
     </div>
-
 </div>
-
 </section>
 
-
-<!-- STORY -->
-
+<!-- الألقاب -->
 <section>
-
 <div class="container">
-
     <div class="section-title">
-
-        <span>OUR STORY</span>
-
-        <h2>بداية الحكاية 📖</h2>
-
-        <p>بعض الأشياء لا تحتاج إلى صور حتى تبقى.</p>
-
+        <span>MY NAMES FOR YOU</span>
+        <h2>ماذا أناديكِ؟ 💝</h2>
+        <p>كل اسم له مكان خاص في قلبي...</p>
     </div>
-
-    <div class="timeline">
-
-        <div class="story">
-
-            <div class="story-dot"></div>
-
-            <div class="story-card">
-
-                <small>البداية</small>
-
-                <h3>أول مرة عرفتكِ</h3>
-
-                <p>
-                    لم أكن أعرف أن شخصًا قد يدخل حياتي
-                    بطريقة بسيطة ثم يصبح جزءًا مهمًا منها.
-                </p>
-
-            </div>
-
+    <div class="petnames">
+        <div class="petname" onclick="showPetname('قطتي 🐱')">
+            <span class="emoji">🐱</span>
+            <h3>قطتي</h3>
         </div>
+        <div class="petname" onclick="showPetname('حبيبتي 💖')">
+            <span class="emoji">💖</span>
+            <h3>حبيبتي</h3>
+        </div>
+        <div class="petname" onclick="showPetname('زوجتي 💍')">
+            <span class="emoji">💍</span>
+            <h3>زوجتي</h3>
+        </div>
+        <div class="petname" onclick="showPetname('عثولتي 🦋')">
+            <span class="emoji">🦋</span>
+            <h3>عثولتي</h3>
+        </div>
+        <div class="petname" onclick="showPetname('مزتي 🔥')">
+            <span class="emoji">🔥</span>
+            <h3>مزتي</h3>
+        </div>
+        <div class="petname" onclick="showPetname('ملاكي 👼')">
+            <span class="emoji">👼</span>
+            <h3>ملاكي</h3>
+        </div>
+    </div>
+</div>
+</section>
 
-
+<!-- القصة -->
+<section>
+<div class="container">
+    <div class="section-title">
+        <span>OUR STORY</span>
+        <h2>بداية الحكاية 📖</h2>
+        <p>بعض الأشياء لا تحتاج إلى صور حتى تبقى.</p>
+    </div>
+    <div class="timeline">
         <div class="story">
-
             <div class="story-dot"></div>
-
             <div class="story-card">
-
+                <small>5 ديسمبر 2025</small>
+                <h3>أول مرة عرفتكِ</h3>
+                <p>
+                    في ذلك اليوم، لم أكن أعرف أن حياتي ستتغير...
+                    وأن شخصًا مثلكِ سيدخل قلبي بهذه الطريقة.
+                </p>
+            </div>
+        </div>
+        <div class="story">
+            <div class="story-dot"></div>
+            <div class="story-card">
                 <small>بعدها...</small>
-
                 <h3>بدأت أتعلق بكِ</h3>
-
                 <p>
                     صرت أنتظر كلامكِ، وأبتسم عندما أرى اسمكِ،
                     وأبحث عن أي سبب يجعلني أتكلم معكِ.
                 </p>
-
             </div>
-
         </div>
-
-
         <div class="story">
-
             <div class="story-dot"></div>
-
             <div class="story-card">
-
                 <small>لحظة</small>
-
                 <h3>أصبحتِ مختلفة</h3>
-
                 <p>
                     لم تعودي مجرد شخص أحبه...
                     أصبحتِ الشخص الذي أتمنى أن يبقى.
                 </p>
-
             </div>
-
         </div>
-
-
         <div class="story">
-
             <div class="story-dot"></div>
-
             <div class="story-card">
-
                 <small>اليوم</small>
-
                 <h3>وما زالت القصة مستمرة ❤️</h3>
-
                 <p>
                     وهذه الصفحة ليست النهاية...
                     إنها مجرد فصل صغير من قصتنا.
                 </p>
-
             </div>
-
         </div>
-
     </div>
-
 </div>
-
 </section>
 
-
-<!-- SECRET MESSAGES -->
-
+<!-- كلمات الحب -->
 <section>
-
 <div class="container">
-
     <div class="section-title">
-
-        <span>SECRET NOTES</span>
-
-        <h2>رسائل لكِ 💌</h2>
-
-        <p>اضغطي على البطاقات واكتشفي ما بداخلها.</p>
-
+        <span>WORDS FROM MY HEART</span>
+        <h2>كلمات أقولها لكِ 💌</h2>
+        <p>كلمات بسيطة... لكنها تحمل كل مشاعري.</p>
     </div>
+    <div class="love-words">
+        <div class="word-card">
+            <div class="word gradient">أعشقكِ</div>
+            <p>لأن كلمة "أحبك" لم تعد تكفي لوصف ما أشعر به تجاهك.</p>
+        </div>
+        <div class="word-card">
+            <div class="word gradient">عمري</div>
+            <p>لأنكِ أصبحتِ جزءًا من أيامي... بل أصبحتِ كل أيامي.</p>
+        </div>
+        <div class="word-card">
+            <div class="word gradient">ملاكي</div>
+            <p>لأن وجودكِ في حياتي يشبه معجزة سماوية.</p>
+        </div>
+        <div class="word-card">
+            <div class="word gradient">حبيبتي</div>
+            <p>لأن هذه الكلمة تخرج من قلبي قبل لساني.</p>
+        </div>
+    </div>
+</div>
+</section>
 
-
+<!-- الرسائل السرية -->
+<section>
+<div class="container">
+    <div class="section-title">
+        <span>SECRET NOTES</span>
+        <h2>رسائل لكِ 💌</h2>
+        <p>اضغطي على البطاقات واكتشفي ما بداخلها.</p>
+    </div>
     <div class="messages">
-
         <div class="message" onclick="openMessage(this)">
-
             <div class="lock">🔒</div>
-
             <h3>عندما تشتاقين لي</h3>
-
             <p>
                 تذكري أن هناك شخصًا في مكان ما
                 يتمنى الآن لو كان بجانبكِ.
             </p>
-
         </div>
-
-
         <div class="message" onclick="openMessage(this)">
-
             <div class="lock">🔒</div>
-
             <h3>عندما تكونين حزينة</h3>
-
             <p>
                 لا تسمحي ليوم سيئ أن يقنعكِ
                 أنكِ لستِ جميلة أو مهمة.
                 أنتِ أكثر من ذلك بكثير.
             </p>
-
         </div>
-
-
         <div class="message" onclick="openMessage(this)">
-
             <div class="lock">🔒</div>
-
             <h3>شيء لا أقوله كثيرًا</h3>
-
             <p>
                 وجودكِ في حياتي من الأشياء التي
                 أحمد الله عليها كثيرًا.
             </p>
-
         </div>
-
-
         <div class="message" onclick="openMessage(this)">
-
             <div class="lock">🔒</div>
-
             <h3>سر صغير 🤫</h3>
-
             <p>
                 نعم، أحيانًا أفتح المحادثة فقط
                 لأرى اسمكِ وأبتسم ثم أغلقها 😂❤️
             </p>
-
         </div>
-
     </div>
-
 </div>
-
 </section>
 
-
-<!-- STARS -->
-
+<!-- النجوم -->
 <section>
-
 <div class="container">
-
     <div class="section-title">
-
         <span>OUR SKY</span>
-
         <h2>اختاري نجمة ✨</h2>
-
         <p>كل نجمة تخبئ كلمة مني لكِ.</p>
-
     </div>
-
-
     <div class="sky" id="sky">
-
         <div class="sky-message">
-
             <h3>سماء صغيرة لنا 🌌</h3>
-
             <p>اضغطي على أي نجمة.</p>
-
         </div>
-
     </div>
-
 </div>
-
 </section>
 
-
-<!-- QUIZ -->
-
+<!-- اللعبة -->
 <section>
-
 <div class="container">
-
     <div class="section-title">
-
         <span>JUST FOR FUN</span>
-
         <h2>اختبار صغير 😂❤️</h2>
-
         <p>خلينا نشوف كم تعرفيني.</p>
-
     </div>
-
-
     <div class="quiz">
-
-        <h3 id="question">
-            ما الشيء الذي يجعلني سعيدًا أكثر؟
-        </h3>
-
+        <h3 id="question">ما الشيء الذي يجعلني سعيدًا أكثر؟</h3>
         <div class="answers">
-
-            <button class="answer" onclick="answer(0)">
-                المال 💰
-            </button>
-
-            <button class="answer" onclick="answer(1)">
-                وجودكِ ❤️
-            </button>
-
-            <button class="answer" onclick="answer(0)">
-                النوم 😴
-            </button>
-
-            <button class="answer" onclick="answer(0)">
-                الطعام 🍕
-            </button>
-
+            <button class="answer" onclick="answer(0)">المال 💰</button>
+            <button class="answer" onclick="answer(1)">وجودكِ ❤️</button>
+            <button class="answer" onclick="answer(0)">النوم 😴</button>
+            <button class="answer" onclick="answer(0)">الطعام 🍕</button>
         </div>
-
         <div id="quizResult"></div>
-
     </div>
-
 </div>
-
 </section>
 
-
-<!-- LETTER -->
-
+<!-- الرسالة الكبيرة -->
 <section>
-
 <div class="container">
-
     <div class="section-title">
-
         <span>FROM ME TO YOU</span>
-
         <h2>رسالة مني لكِ 💌</h2>
-
     </div>
-
-
     <div class="letter">
-
         <p>
-
             إلى الشخص الذي أصبح له مكان خاص في قلبي...
-
             <br><br>
-
             لا أعرف إذا كانت الكلمات قادرة فعلًا
             على وصف ما أشعر به، لكنني سأحاول.
-
             <br><br>
-
             أحب وجودكِ في أيامي، أحب تفاصيلكِ،
             كلامكِ، ضحكتكِ، وحتى الأشياء الصغيرة
             التي ربما لا تنتبهين لها.
-
             <br><br>
-
             صنعت هذا الموقع لأنني أردت أن أعطيكِ
             شيئًا يبقى، شيئًا تستطيعين العودة إليه
             في أي وقت وتعرفين أن هناك شخصًا
             كتب كل هذه الكلمات من أجلكِ.
-
             <br><br>
-
             وإذا سألتِني يومًا:
             "لماذا أنا؟"
-
             <br><br>
-
             فربما لا أملك إجابة مثالية...
-
             لكنني أعرف شيئًا واحدًا:
-
             <br><br>
-
-            <strong>
-                لأن قلبي اختاركِ.
-            </strong>
-
+            <strong>لأن قلبي اختاركِ.</strong>
         </p>
-
-
-        <div class="signature">
-            من حكيم ❤️
-        </div>
-
+        <div class="signature">من دوما ❤️</div>
     </div>
-
 </div>
-
 </section>
 
-
-<!-- GIFT -->
-
+<!-- الهدية -->
 <section>
-
 <div class="container gift-section">
-
     <div class="section-title">
-
         <span>THE LAST THING</span>
-
         <h2>بقيت هدية واحدة 🎁</h2>
-
         <p>اضغطي عليها...</p>
-
     </div>
-
-
-    <div class="gift" onclick="openGift()">
-        🎁
-    </div>
-
-
+    <div class="gift" onclick="openGift()">🎁</div>
     <div class="final-message" id="finalMessage">
-
-        <h2>
-            أحبكِ ❤️
-        </h2>
-
+        <h2>أحبكِ ❤️</h2>
         <p>
-
             ربما هذا مجرد موقع على شاشة...
-
             <br>
-
             لكنه يحمل شيئًا حقيقيًا جدًا:
-
             <br><br>
-
             ذكريات، كلمات، مشاعر،
             وقلب اختار أن يضع جزءًا منه هنا.
-
             <br><br>
-
             أتمنى أن تبتسمي كلما دخلتِ إليه.
-
             <br><br>
-
-            **قصتنا لم تنتهِ هنا...**
-
+            قصتنا لم تنتهِ هنا...
             <br>
-
             هذه مجرد البداية. 🌙
-
         </p>
-
     </div>
-
 </div>
-
 </section>
 
-
 <footer>
-
     صُنع بحب ❤️
-
     <br>
-
-    Hakim × You
-
+    دوما × ملاكي
 </footer>
 
 </div>
 
-
-<!-- MUSIC BUTTON -->
-
-<button class="music" onclick="toggleMusic()" id="musicBtn">
-    🎵
-</button>
-
-
-<audio id="music" loop>
-    <!-- ضع رابط أغنيتك هنا -->
-</audio>
-
-
-<!-- Three.js مكتبة -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-
 <script>
+// ==================== البيانات ====================
+const START_DATE = "2025-12-05T00:00:00";
 
-/* =====================================================
-   التخصيص
-===================================================== */
-
-const MY_NAME = "حكيم";
-const HER_NAME = "حبيبتي";
-
-/*
-   ضع تاريخ بداية علاقتكم هنا
-   مثال:
-   "2025-08-20T20:00:00"
-*/
-const START_DATE = "2025-08-20T20:00:00";
-
-
-/* =====================================================
-   الأسماء
-===================================================== */
-
-document.getElementById("coupleNames").textContent =
-    MY_NAME + " ❤️ " + HER_NAME;
-
-
-/* =====================================================
-   إنشاء النجوم بالخلفية
-===================================================== */
-
+// ==================== إنشاء النجوم ====================
 const stars = document.getElementById("stars");
-
-for(let i=0;i<150;i++){
-
+for(let i=0;i<200;i++){
     const star = document.createElement("div");
-
     star.className = "star";
-
     star.style.left = Math.random()*100 + "%";
     star.style.top = Math.random()*100 + "%";
-
-    star.style.animationDelay =
-        Math.random()*3 + "s";
-
+    star.style.animationDelay = Math.random()*3 + "s";
     stars.appendChild(star);
 }
 
-
-/* =====================================================
-   فتح الموقع
-===================================================== */
-
+// ==================== فتح الموقع ====================
 function openSite(){
-
     const intro = document.getElementById("intro");
     const main = document.getElementById("main");
-
     intro.style.opacity = "0";
-
     setTimeout(()=>{
-
         intro.style.display = "none";
-
         main.style.opacity = "1";
-
         startHearts();
-
-        // بدء خلفية WebGL بعد فتح الموقع
-        initWebGLBackground();
-
     },900);
 }
 
-
-/* =====================================================
-   العداد
-===================================================== */
-
+// ==================== العداد ====================
 function updateCounter(){
-
     const start = new Date(START_DATE);
     const now = new Date();
-
     let diff = now - start;
-
     if(diff < 0) diff = 0;
-
-    const secondsTotal =
-        Math.floor(diff / 1000);
-
-    const days =
-        Math.floor(secondsTotal / 86400);
-
-    const hours =
-        Math.floor((secondsTotal % 86400) / 3600);
-
-    const minutes =
-        Math.floor((secondsTotal % 3600) / 60);
-
-    const seconds =
-        secondsTotal % 60;
-
+    const secondsTotal = Math.floor(diff / 1000);
+    const days = Math.floor(secondsTotal / 86400);
+    const hours = Math.floor((secondsTotal % 86400) / 3600);
+    const minutes = Math.floor((secondsTotal % 3600) / 60);
+    const seconds = secondsTotal % 60;
     document.getElementById("days").textContent = days;
     document.getElementById("hours").textContent = hours;
     document.getElementById("minutes").textContent = minutes;
     document.getElementById("seconds").textContent = seconds;
 }
-
 updateCounter();
 setInterval(updateCounter,1000);
 
-
-/* =====================================================
-   الرسائل
-===================================================== */
-
-function openMessage(card){
-
-    card.classList.toggle("open");
-
+// ==================== الألقاب ====================
+function showPetname(name){
+    alert("أناديكِ... " + name + " ❤️");
+    createHeartBurst();
 }
 
+// ==================== الرسائل ====================
+function openMessage(card){
+    card.classList.toggle("open");
+}
 
-/* =====================================================
-   النجوم الخاصة
-===================================================== */
-
+// ==================== النجوم ====================
 const sky = document.getElementById("sky");
-
 const skyMessages = [
-
     "أنتِ أجمل صدفة حدثت لي. ❤️",
-
     "وجودكِ يجعل الأيام العادية أجمل.",
-
     "لا أحتاج إلى سماء كاملة، تكفيني نجمة واحدة مثلكِ. ✨",
-
     "أحبكِ أكثر مما تستطيع هذه الصفحة أن تشرح.",
-
     "أتمنى أن تبقى ضحكتكِ دائمًا موجودة.",
-
     "هذه النجمة تقول لكِ: لا تنسي أنكِ مهمة جدًا. 💗",
-
-    "لو كان للحب مكان، لكان اسمكِ عنوانه."
-
+    "لو كان للحب مكان، لكان اسمكِ عنوانه.",
+    "قطتي، حبيبتي، ملاكي... كلها أسماء تناديكِ.",
+    "أعشقكِ... وأكثر ما يسعدني هو رؤيتكِ سعيدة."
 ];
-
-for(let i=0;i<18;i++){
-
+for(let i=0;i<20;i++){
     const star = document.createElement("div");
-
     star.className = "sky-star";
-
     star.textContent = "✦";
-
     star.style.left = Math.random()*90 + 5 + "%";
     star.style.top = Math.random()*80 + 5 + "%";
-
-    star.style.animationDelay =
-        Math.random()*2 + "s";
-
+    star.style.animationDelay = Math.random()*2 + "s";
     star.onclick = function(){
-
-        const message =
-            skyMessages[Math.floor(Math.random()*skyMessages.length)];
-
+        const message = skyMessages[Math.floor(Math.random()*skyMessages.length)];
         alert(message);
-
-        // إطلاق انفجار قلوب عند النقر
         createHeartBurst();
-
     };
-
     sky.appendChild(star);
 }
 
-
-/* =====================================================
-   اللعبة
-===================================================== */
-
+// ==================== اللعبة ====================
 let quizAnswered = false;
-
 function answer(correct){
-
     if(quizAnswered) return;
-
     quizAnswered = true;
-
-    const result =
-        document.getElementById("quizResult");
-
+    const result = document.getElementById("quizResult");
     if(correct){
-
-        result.textContent =
-            "صح! 😂❤️ واضح أنكِ تعرفينني جيدًا.";
-
+        result.textContent = "صح! 😂❤️ واضح أنكِ تعرفينني جيدًا.";
         createHeartBurst();
-
-        // إضافة شرر WebGL
-        if(window.webglBurst) webglBurst();
-
     }else{
-
-        result.textContent =
-            "غلط 😂 لكن سأعطيكِ فرصة ثانية... في قلبكِ.";
-
+        result.textContent = "غلط 😂 لكن سأعطيكِ فرصة ثانية... في قلبكِ.";
     }
-
 }
 
-
-/* =====================================================
-   الهدية
-===================================================== */
-
+// ==================== الهدية ====================
 function openGift(){
-
-    const final =
-        document.getElementById("finalMessage");
-
+    const final = document.getElementById("finalMessage");
     final.classList.add("show");
-
     createHeartBurst();
-
-    // انفجار قلوب ضخم في WebGL
-    if(window.webglHugeBurst) webglHugeBurst();
-
     setTimeout(()=>{
-
-        final.scrollIntoView({
-            behavior:"smooth",
-            block:"center"
-        });
-
+        final.scrollIntoView({behavior:"smooth",block:"center"});
     },300);
-
 }
 
-
-/* =====================================================
-   القلوب المتحركة
-===================================================== */
-
+// ==================== القلوب ====================
 function createHeart(){
-
-    const heart =
-        document.createElement("div");
-
+    const heart = document.createElement("div");
     heart.className = "floating-heart";
-
-    const hearts = [
-        "❤️",
-        "💗",
-        "💖",
-        "💕",
-        "💘",
-        "✨"
-    ];
-
-    heart.textContent =
-        hearts[Math.floor(Math.random()*hearts.length)];
-
-    heart.style.left =
-        Math.random()*100 + "vw";
-
-    heart.style.animationDuration =
-        (4 + Math.random()*5) + "s";
-
-    heart.style.fontSize =
-        (14 + Math.random()*22) + "px";
-
+    const hearts = ["❤️","💗","💖","💕","💘","✨"];
+    heart.textContent = hearts[Math.floor(Math.random()*hearts.length)];
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.animationDuration = (4 + Math.random()*5) + "s";
+    heart.style.fontSize = (14 + Math.random()*22) + "px";
     document.body.appendChild(heart);
-
-    setTimeout(()=>{
-        heart.remove();
-    },9000);
+    setTimeout(()=>{heart.remove();},9000);
 }
-
 function startHearts(){
-
     setInterval(createHeart,1200);
-
 }
-
 function createHeartBurst(){
-
-    for(let i=0;i<25;i++){
-
+    for(let i=0;i<30;i++){
         setTimeout(createHeart,i*60);
-
-    }
-
-}
-
-
-/* =====================================================
-   الموسيقى
-===================================================== */
-
-const music =
-    document.getElementById("music");
-
-function toggleMusic(){
-
-    const btn =
-        document.getElementById("musicBtn");
-
-    if(!music.src){
-
-        alert(
-            "أضف رابط الأغنية داخل audio في الكود 🎵"
-        );
-
-        return;
-
-    }
-
-    if(music.paused){
-
-        music.play();
-
-        btn.textContent = "⏸️";
-
-    }else{
-
-        music.pause();
-
-        btn.textContent = "🎵";
-
-    }
-
-}
-
-
-/* =====================================================
-   WebGL ثلاثي الأبعاد
-===================================================== */
-
-let renderer, scene, camera;
-let heartParticles = [];
-let starField = [];
-
-function initWebGLBackground() {
-
-    const container = document.getElementById('webgl-background');
-
-    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    container.appendChild(renderer.domElement);
-
-    scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 5;
-
-    // إضاءة خافتة
-    const ambientLight = new THREE.AmbientLight(0xff88aa, 0.7);
-    scene.add(ambientLight);
-
-    // إضافة نجوم ثلاثية الأبعاد
-    const starsGeometry = new THREE.BufferGeometry();
-    const starCount = 800;
-    const positions = new Float32Array(starCount * 3);
-
-    for (let i = 0; i < starCount * 3; i += 3) {
-        positions[i] = (Math.random() - 0.5) * 40;
-        positions[i+1] = (Math.random() - 0.5) * 40;
-        positions[i+2] = (Math.random() - 0.5) * 40;
-    }
-
-    starsGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-    const starsMaterial = new THREE.PointsMaterial({
-        color: 0xffffff,
-        size: 0.08,
-        transparent: true,
-        opacity: 0.7,
-        blending: THREE.AdditiveBlending
-    });
-
-    const starField = new THREE.Points(starsGeometry, starsMaterial);
-    scene.add(starField);
-
-    // إنشاء قلوب عائمة (Instanced Mesh للكفاءة)
-    const heartShape = new THREE.Shape();
-    const x = 0, y = 0;
-    heartShape.moveTo(x + 0.5, y + 0.5);
-    heartShape.bezierCurveTo(x + 0.5, y + 0.5, x + 0.4, y, x, y);
-    heartShape.bezierCurveTo(x - 0.6, y, x - 0.6, y + 0.7, x - 0.6, y + 0.7);
-    heartShape.bezierCurveTo(x - 0.6, y + 1.1, x - 0.3, y + 1.54, x + 0.5, y + 1.9);
-    heartShape.bezierCurveTo(x + 1.2, y + 1.54, x + 1.6, y + 1.1, x + 1.6, y + 0.7);
-    heartShape.bezierCurveTo(x + 1.6, y + 0.7, x + 1.6, y, x + 1.0, y);
-    heartShape.bezierCurveTo(x + 0.7, y, x + 0.5, y + 0.5, x + 0.5, y + 0.5);
-
-    const heartGeometry = new THREE.ExtrudeGeometry(heartShape, {
-        depth: 0.2,
-        bevelEnabled: true,
-        bevelSegments: 2,
-        steps: 2,
-        bevelSize: 0.1,
-        bevelThickness: 0.1
-    });
-    heartGeometry.center();
-
-    const heartMaterial = new THREE.MeshStandardMaterial({
-        color: 0xff3366,
-        roughness: 0.3,
-        metalness: 0.1,
-        emissive: new THREE.Color(0x550011)
-    });
-
-    heartParticles = [];
-
-    for (let i = 0; i < 50; i++) {
-        const heart = new THREE.Mesh(heartGeometry, heartMaterial);
-
-        heart.position.set(
-            (Math.random() - 0.5) * 20,
-            (Math.random() - 0.5) * 20,
-            (Math.random() - 0.5) * 20 - 5
-        );
-
-        heart.rotation.set(
-            Math.random() * Math.PI,
-            Math.random() * Math.PI,
-            Math.random() * Math.PI
-        );
-
-        const scale = Math.random() * 0.3 + 0.2;
-        heart.scale.set(scale, scale, scale);
-
-        heart.userData = {
-            speed: Math.random() * 0.01 + 0.005,
-            rotationSpeed: Math.random() * 0.02 + 0.005,
-            floatOffset: Math.random() * 100
-        };
-
-        scene.add(heart);
-        heartParticles.push(heart);
-    }
-
-    // تفاعل الماوس
-    window.addEventListener('mousemove', onMouseMove);
-    window.addEventListener('resize', onWindowResize);
-
-    animateWebGL();
-}
-
-function onMouseMove(event) {
-    const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-    const mouseY = (event.clientY / window.innerHeight) * 2 - 1;
-
-    gsap.to(camera.position, {
-        x: mouseX * 0.5,
-        y: -mouseY * 0.5,
-        duration: 0.8,
-        ease: "power2.out"
-    });
-}
-
-function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-}
-
-function animateWebGL() {
-    requestAnimationFrame(animateWebGL);
-
-    heartParticles.forEach(heart => {
-        heart.position.y += Math.sin(Date.now() * heart.userData.speed + heart.userData.floatOffset) * 0.003;
-        heart.rotation.x += heart.userData.rotationSpeed;
-        heart.rotation.y += heart.userData.rotationSpeed;
-    });
-
-    if (starField) {
-        starField.rotation.y += 0.0002;
-    }
-
-    renderer.render(scene, camera);
-}
-
-// انفجار قلوب WebGL
-function webglBurst() {
-    // يمكن إضافة قلوب مؤقتة تنفجر
-    createHeartBurst();
-}
-
-function webglHugeBurst() {
-    for (let i = 0; i < 80; i++) {
-        setTimeout(createHeart, i * 40);
-    }
-    // إضافة وميض في WebGL
-    if (scene) {
-        const flashLight = new THREE.PointLight(0xff4499, 20, 30);
-        flashLight.position.set(0, 0, 5);
-        scene.add(flashLight);
-        setTimeout(() => scene.remove(flashLight), 500);
     }
 }
-
 </script>
 
 </body>
