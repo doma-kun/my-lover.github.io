@@ -372,6 +372,37 @@ section{
 }
 
 /* =========================
+   أسباب الحب
+========================= */
+
+.reasons{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:15px;
+    max-width:650px;
+    margin:auto;
+}
+
+.reason{
+    padding:22px;
+    border-radius:18px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    color:#d7ced8;
+    font-size:15px;
+    text-align:center;
+    transition:.3s;
+    cursor:pointer;
+    line-height:1.8;
+}
+
+.reason:hover{
+    background:rgba(255,70,130,.1);
+    transform:translateX(-5px);
+    border-color:rgba(255,90,140,.3);
+}
+
+/* =========================
    كلمات الحب
 ========================= */
 
@@ -646,6 +677,31 @@ section{
 }
 
 /* =========================
+   زر الموسيقى
+========================= */
+
+.music-btn{
+    position:fixed;
+    bottom:20px;
+    left:20px;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    border:2px solid #ff397d;
+    background:rgba(20,10,30,.9);
+    color:white;
+    font-size:24px;
+    cursor:pointer;
+    z-index:1000;
+    box-shadow:0 0 25px rgba(255,57,125,.4);
+    transition:.3s;
+}
+
+.music-btn:hover{
+    transform:scale(1.1);
+}
+
+/* =========================
    القلوب
 ========================= */
 
@@ -890,6 +946,32 @@ footer{
 </div>
 </section>
 
+<!-- أسباب الحب -->
+<section>
+<div class="container">
+    <div class="section-title">
+        <span>REASONS</span>
+        <h2>لماذا أحبكِ؟ 💝</h2>
+        <p>هذه بعض الأسباب... والباقي أكثر بكثير.</p>
+    </div>
+    <div class="reasons">
+        <div class="reason">1. لأن ضحكتكِ تضيء يومي وتنسيني كل همومي ✨</div>
+        <div class="reason">2. لأن عيونكِ تحكي قصصًا لا تنتهي ❤️</div>
+        <div class="reason">3. لأنكِ تفهمينني بدون أن أنطق بكلمة 💗</div>
+        <div class="reason">4. لأن وجودكِ معي نعمة أحمد الله عليها كل يوم 🌸</div>
+        <div class="reason">5. لأنكِ تجعلين الأيام العادية مميزة 💖</div>
+        <div class="reason">6. لأن صوتكِ هو أطرب نغمة سمعتها 🎵</div>
+        <div class="reason">7. لأنكِ أنتِ... فقط أنتِ وليس غيركِ 💕</div>
+        <div class="reason">8. لأن ابتسامتكِ أجمل هدية أحصل عليها 🎁</div>
+        <div class="reason">9. لأنكِ تجعلينني أريد أن أكون شخصًا أفضل 🌟</div>
+        <div class="reason">10. لأن قلبي اختاركِ... وهذا يكفي 💘</div>
+        <div class="reason" style="font-weight:800;color:#ff80a8;font-size:18px;">
+            وهذا ولا شي... لأن أسباب حبي لكِ لا تُعد ولا تُحصى ❤️
+        </div>
+    </div>
+</div>
+</section>
+
 <!-- كلمات الحب -->
 <section>
 <div class="container">
@@ -991,14 +1073,62 @@ footer{
         <p>خلينا نشوف كم تعرفيني.</p>
     </div>
     <div class="quiz">
-        <h3 id="question">ما الشيء الذي يجعلني سعيدًا أكثر؟</h3>
+        <h3>كم عمري؟</h3>
         <div class="answers">
-            <button class="answer" onclick="answer(0)">المال 💰</button>
-            <button class="answer" onclick="answer(1)">وجودكِ ❤️</button>
-            <button class="answer" onclick="answer(0)">النوم 😴</button>
-            <button class="answer" onclick="answer(0)">الطعام 🍕</button>
+            <button class="answer" onclick="checkAge(15)">15</button>
+            <button class="answer" onclick="checkAge(16)">16</button>
+            <button class="answer" onclick="checkAge(17)">17</button>
+            <button class="answer" onclick="checkAge(18)">18</button>
         </div>
-        <div id="quizResult"></div>
+        <div id="ageResult"></div>
+    </div>
+</div>
+</section>
+
+<!-- اللعبة الثانية -->
+<section>
+<div class="container">
+    <div class="quiz">
+        <h3>ما هو لوني المفضل؟</h3>
+        <div class="answers">
+            <button class="answer" onclick="checkColor('أحمر')">أحمر ❤️</button>
+            <button class="answer" onclick="checkColor('أسود')">أسود 🖤</button>
+            <button class="answer" onclick="checkColor('أزرق')">أزرق 💙</button>
+            <button class="answer" onclick="checkColor('أخضر')">أخضر 💚</button>
+        </div>
+        <div id="colorResult"></div>
+    </div>
+</div>
+</section>
+
+<!-- اللعبة الثالثة -->
+<section>
+<div class="container">
+    <div class="quiz">
+        <h3>ما هي أكلتي المفضلة؟</h3>
+        <div class="answers">
+            <button class="answer" onclick="checkFood('بيتزا')">بيتزا 🍕</button>
+            <button class="answer" onclick="checkFood('إندومي')">إندومي 🍜</button>
+            <button class="answer" onclick="checkFood('برجر')">برجر 🍔</button>
+            <button class="answer" onclick="checkFood('كبسة')">كبسة 🍛</button>
+        </div>
+        <div id="foodResult"></div>
+    </div>
+</div>
+</section>
+
+<!-- اللعبة الرابعة -->
+<section>
+<div class="container">
+    <div class="quiz">
+        <h3>ما هو أكثر شي أحبه؟</h3>
+        <div class="answers">
+            <button class="answer" onclick="checkLove('الألعاب')">الألعاب 🎮</button>
+            <button class="answer" onclick="checkLove('أنتِ')">أنتِ ❤️</button>
+            <button class="answer" onclick="checkLove('النوم')">النوم 😴</button>
+            <button class="answer" onclick="checkLove('الأكل')">الأكل 🍕</button>
+        </div>
+        <div id="loveResult"></div>
     </div>
 </div>
 </section>
@@ -1075,6 +1205,14 @@ footer{
 </footer>
 
 </div>
+
+<!-- زر الموسيقى -->
+<button class="music-btn" onclick="toggleMusic()">🎵</button>
+
+<!-- الموسيقى -->
+<audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_a2ba2b1b3e.mp3" type="audio/mpeg">
+</audio>
 
 <script>
 // ==================== البيانات ====================
@@ -1161,17 +1299,62 @@ for(let i=0;i<20;i++){
     sky.appendChild(star);
 }
 
-// ==================== اللعبة ====================
-let quizAnswered = false;
-function answer(correct){
-    if(quizAnswered) return;
-    quizAnswered = true;
-    const result = document.getElementById("quizResult");
-    if(correct){
-        result.textContent = "صح! 😂❤️ واضح أنكِ تعرفينني جيدًا.";
+// ==================== اللعبة 1: العمر ====================
+let ageAnswered = false;
+function checkAge(age){
+    if(ageAnswered) return;
+    ageAnswered = true;
+    const result = document.getElementById("ageResult");
+    if(age === 17){
+        result.textContent = "صح! عمري 17 سنة 😄❤️";
         createHeartBurst();
     }else{
-        result.textContent = "غلط 😂 لكن سأعطيكِ فرصة ثانية... في قلبكِ.";
+        result.textContent = "غلط 😂 عمري 17 سنة!";
+    }
+}
+
+// ==================== اللعبة 2: اللون ====================
+let colorAnswered = false;
+function checkColor(color){
+    if(colorAnswered) return;
+    colorAnswered = true;
+    const result = document.getElementById("colorResult");
+    if(color === 'أسود'){
+        result.textContent = "صح! لوني المفضل الأسود 🖤";
+        createHeartBurst();
+    }else{
+        result.textContent = "غلط 😂 لوني المفضل الأسود!";
+    }
+}
+
+// ==================== اللعبة 3: الأكل ====================
+let foodAnswered = false;
+function checkFood(food){
+    if(foodAnswered) return;
+    foodAnswered = true;
+    const result = document.getElementById("foodResult");
+    if(food === 'إندومي'){
+        result.textContent = "صح! أحب الإندومي 🍜❤️";
+        createHeartBurst();
+    }else{
+        result.textContent = "غلط 😂 أكلتي المفضلة إندومي!";
+    }
+}
+
+// ==================== اللعبة 4: أكثر شي أحبه ====================
+let loveAnswered = false;
+function checkLove(thing){
+    if(loveAnswered) return;
+    loveAnswered = true;
+    const result = document.getElementById("loveResult");
+    if(thing === 'أنتِ'){
+        result.textContent = "صح! أكثر شي أحبه هو أنتِ ❤️😍";
+        createHeartBurst();
+        for(let i=0;i<50;i++){
+            setTimeout(createHeart,i*50);
+        }
+    }else{
+        result.textContent = "غلط 😂 أكثر شي أحبه هو أنتِ!";
     }
 }
 
@@ -1183,6 +1366,16 @@ function openGift(){
     setTimeout(()=>{
         final.scrollIntoView({behavior:"smooth",block:"center"});
     },300);
+}
+
+// ==================== الموسيقى ====================
+function toggleMusic(){
+    const music = document.getElementById("bgMusic");
+    if(music.paused){
+        music.play();
+    }else{
+        music.pause();
+    }
 }
 
 // ==================== القلوب ====================
